@@ -120,7 +120,7 @@ function CreatePDF() {
 
     
     const image = new Image();
-    image.src = "img/utulekPDF.png";
+    image.src = "img/utulekPDF3.png";
     doc.addImage(image, "png", 0, 0, 210, 297);
     
     
@@ -172,9 +172,13 @@ function CreatePDF() {
     doc.setFontSize(22)
     doc.text(date, 52.5, 269, "center");
     
+    doc.setFont('Georgia', 'normal');
+    doc.setFontSize(18)
+    doc.text("Datum", 52.5, 281, "center");
+
     
     doc.setFont('Georgia', 'normal');
-    doc.setFontSize(22)
+    doc.setFontSize(18)
     doc.text("Útulek MB z.s.", 158, 281, "center");
     
 
@@ -222,3 +226,7 @@ image_input.addEventListener("change", function(){
     console.log(image_input.value);
     reader.readAsDataURL(image_input.files[0]);
 });
+
+
+
+
