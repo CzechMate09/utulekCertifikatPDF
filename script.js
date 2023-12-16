@@ -120,7 +120,7 @@ function CreatePDF() {
 
     
     const image = new Image();
-    image.src = "img/utulekPDF2.png";
+    image.src = "img/utulekPDF.png";
     doc.addImage(image, "png", 0, 0, 210, 297);
     
     
@@ -170,22 +170,25 @@ function CreatePDF() {
     //date
     doc.setFont('Georgia', 'normal');
     doc.setFontSize(22)
-    doc.text(date, 52.5, 173, "center");
-
-
+    doc.text(date, 52.5, 269, "center");
+    
+    
+    doc.setFont('Georgia', 'normal');
+    doc.setFontSize(22)
+    doc.text("Útulek MB z.s.", 158, 281, "center");
     
 
     var pdf_width = doc.internal.pageSize.getWidth();
-var pdf_height = doc.internal.pageSize.getHeight();
-var max_height = 80; 
-var scaled_height = Math.min(max_height, pdf_height / 2);
-var scaled_width = (image_width * scaled_height) / image_height;
+    var pdf_height = doc.internal.pageSize.getHeight();
+    var max_height = 90; 
+    var scaled_height = Math.min(max_height, pdf_height / 2);
+    var scaled_width = (image_width * scaled_height) / image_height;
 
-var x_position = (pdf_width - scaled_width) / 2;
-var y_position = (pdf_height - scaled_height);
+    var x_position = (pdf_width - scaled_width) / 2;
+    var y_position = (pdf_height - scaled_height);
 
 if(uploaded_image !== "") {
-  doc.addImage(uploaded_image, "PNG", x_position, y_position - 15, scaled_width, scaled_height);
+  doc.addImage(uploaded_image, "PNG", x_position, y_position - 50, scaled_width, scaled_height);
 };
       
     //doc.addImage(uploaded_image, "PNG", 105, 200, 80, 80);
@@ -219,7 +222,3 @@ image_input.addEventListener("change", function(){
     console.log(image_input.value);
     reader.readAsDataURL(image_input.files[0]);
 });
-
-
-
-
