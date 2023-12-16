@@ -155,7 +155,7 @@ function CreatePDF() {
     //se stala  animal
     doc.setFont("Franklin Gothic Medium Regular", "normal")
     doc.setFontSize(15)
-    doc.text(`SE ${gender} ADOPTIVNÍM RODIČEM ` + animal, 105, 90, "center");
+    doc.text(`SE ${gender} ADOPTIVNÍM RODIČEM ${animal} JMÉNEM `, 105, 90, "center");
 
     // jmeno zvirete
     doc.setFont('Georgia', 'normal');
@@ -226,7 +226,3 @@ image_input.addEventListener("change", function(){
     console.log(image_input.value);
     reader.readAsDataURL(image_input.files[0]);
 });
-
-
-
-
