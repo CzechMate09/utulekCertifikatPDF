@@ -15,8 +15,6 @@ if (hour >= 6 && hour < 19) {
     body.className = 'dark-mode';
 }
 
-
-
 var customDateInput = document.getElementById('customDateInput');
 var lockedInput = document.getElementById('customLockedInput');
 
@@ -53,7 +51,6 @@ function showLockedInput() {
   }
 }
 
-
 var radioButtons = document.querySelectorAll('input[name="fDatum"]');
 radioButtons.forEach(function (radioButton) {
   radioButton.addEventListener('change', showCustomDateInput);
@@ -61,7 +58,7 @@ radioButtons.forEach(function (radioButton) {
   
 });
 
-function CreatePDF() {
+function CreatePDF(print) {
   
   if (document.getElementById("fName").value == "" || 
       document.getElementById("fAnimal").value == "" || 
@@ -109,20 +106,19 @@ function CreatePDF() {
         break;
     }
 
+    var gender;
     switch (selectedGender) {
       case 'muz':
-        var gender = "STAL";
+        gender = "STAL";
         break;
       case 'zena':
-        var gender = "STALA";
+        gender = "STALA";
         break;
     }
 
-    
     const image = new Image();
     image.src = "img/utulekPDF3.png";
     doc.addImage(image, "png", 0, 0, 210, 297);
-    
     
     //fonts
     doc.addFileToVFS('Georgia-normal.ttf', georgia);
@@ -151,8 +147,7 @@ function CreatePDF() {
     doc.setFontSize(22)
     doc.text(name, 105, 75, "center");
 
-
-    //se stala  animal
+    //se stala
     doc.setFont("Franklin Gothic Medium Regular", "normal")
     doc.setFontSize(15)
     doc.text(`SE ${gender} ADOPTIVNÍM RODIČEM ${animal}`, 105, 90, "center");
@@ -191,16 +186,20 @@ function CreatePDF() {
     var x_position = (pdf_width - scaled_width) / 2;
     var y_position = (pdf_height - scaled_height);
 
-if(uploaded_image !== "") {
-  doc.addImage(uploaded_image, "PNG", x_position, y_position - 50, scaled_width, scaled_height);
-};
+    if(uploaded_image !== "") {
+      doc.addImage(uploaded_image, "PNG", x_position, y_position - 50, scaled_width, scaled_height);
+    };
       
     //doc.addImage(uploaded_image, "PNG", 105, 200, 80, 80);
 
-
-    name = name.replace(/ /g, "_")
-    doc.save(`certifikat_${animalName.toLowerCase()}_${name.toLowerCase()}.pdf`); 
-    };
+    console.log(print)
+    if (print == true) {
+      window.open(doc.output('bloburl'), '_blank');
+    } else {
+      name = name.replace(/ /g, "_")
+      doc.save(`certifikat_${animalName.toLowerCase()}_${name.toLowerCase()}.pdf`);
+    }
+  };
 }
 
 var image_input = document.querySelector("#image_input");

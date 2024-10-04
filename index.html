@@ -15,7 +15,6 @@
 <hr>
 <br>
 
-
   <div class="group">
     <label for="fName">Jméno a přijmení rodiče:</label>
     <input type="text" id="fName" name="fName" class="sul-text-field" required>
@@ -73,16 +72,15 @@
     <div id="display_image"></div>
   </div>
 
-  <button onclick="CreatePDF()" class="sul-btn btn-primary"> <i class="fa-solid fa-download"></i>Stáhnout PDF</button>
-
-
+  <button onclick="CreatePDF(false)" class="sul-btn btn-primary"> <i class="fa-solid fa-download"></i>Stáhnout PDF</button>
+  <br>
+  <button onclick="CreatePDF(true)" class="sul-btn btn-primary"> <i class="fa-solid fa-print"></i>Tisknout PDF</button>
 
 </main>
 
 <script src="fonts/Franklin Gothic Medium Regular-normal.js"></script>
 <script src="fonts/Georgia-normal.js"></script>
 <script src="script.js"></script>
-
 
 <div id="myModal" class="modal">
   <div class="modal-content">
